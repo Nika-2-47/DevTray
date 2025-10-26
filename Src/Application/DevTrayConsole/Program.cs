@@ -34,7 +34,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | httpserver [port] [root] | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | httpserver [port] [root] | exit | help");
 
 		while (true)
 		{
@@ -54,13 +54,35 @@ class Program
 			else if (cmd == "help")
 			{
 				Console.WriteLine("httpserver [port] [root] - 簡易HTTPサーバーを起動します（既定: 8080, カレントディレクトリ）");
-				Console.WriteLine("nightrider - コンソールのエフェクトを表示します（Ctrl+Cで停止）");
+				Console.WriteLine("nightrider - ナイトライダー風エフェクト（任意のキーで停止）");
+				Console.WriteLine("matrix [green|blue|red] - Matrix風レインエフェクト（任意のキーで停止）");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
 			{
 				var nightRider = new NightRiderEffect();
 				nightRider.Run();
+			}
+			else if (cmd == "matrix")
+			{
+				string variant = parts.Length >= 2 ? parts[1].ToLower() : "green";
+				
+				logger.LogInformation("Matrix Rain エフェクトを起動します - バリエーション: {variant}", variant);
+				
+				switch (variant)
+				{
+					case "blue":
+						MatrixRainEffect.RunBlueMatrix();
+						break;
+					case "red":
+						MatrixRainEffect.RunRedMatrix();
+						break;
+					case "green":
+					default:
+						var matrix = new MatrixRainEffect();
+						matrix.Run();
+						break;
+				}
 			}
 			else if (cmd == "httpserver")
 			{
