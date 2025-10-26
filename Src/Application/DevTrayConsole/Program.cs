@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using ConsoleEffects;
 // dotnet add package Microsoft.Extensions.Hosting
 
 
@@ -58,7 +59,8 @@ class Program
 			}
 			else if (cmd == "nightrider")
 			{
-				RunNightRider();
+				var nightRider = new NightRiderEffect();
+				nightRider.Run();
 			}
 			else if (cmd == "httpserver")
 			{
@@ -80,65 +82,7 @@ class Program
 		return 0;
 	}
 
-	static void RunNightRider()
-	{
-		int width = 30;        // 光が動く幅
-		int trail = 5;         // 残像の長さ
-		int delay = 50;        // フレーム間隔(ms)
-		char lightChar = '●';  // 光の文字
-		ConsoleColor baseColor = ConsoleColor.DarkRed;
-		ConsoleColor mainColor = ConsoleColor.Red;
 
-		int pos = 0;
-		int dir = 1;
-
-		Console.CursorVisible = false;
-		Console.WriteLine("ナイトライダー起動中... Ctrl+Cで停止");
-
-		try
-		{
-			while (!Console.KeyAvailable)
-			{
-				for (int i = 0; i < width; i++)
-				{
-					int d = Math.Abs(i - pos);
-
-					if (d == 0)
-					{
-						Console.ForegroundColor = mainColor;
-						Console.Write(lightChar);
-					}
-					else if (d <= trail)
-					{
-						Console.ForegroundColor = baseColor;
-						Console.Write(lightChar);
-					}
-					else
-					{
-						Console.Write(' ');
-					}
-				}
-
-				Console.SetCursorPosition(0, Console.CursorTop);
-				pos += dir;
-				if (pos >= width - 1 || pos <= 0)
-					dir *= -1;
-
-				Thread.Sleep(delay);
-			}
-		}
-		catch (ThreadAbortException)
-		{
-			// 無視
-		}
-		finally
-		{
-			Console.ResetColor();
-			Console.CursorVisible = true;
-			Console.WriteLine("\nナイトライダー停止");
-			while (Console.KeyAvailable) Console.ReadKey(true);
-		}
-	}
 
 	static async Task RunSimpleHttpServer(int port, string root)
 	{
