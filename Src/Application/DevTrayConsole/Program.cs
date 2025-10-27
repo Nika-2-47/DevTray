@@ -34,7 +34,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | httpserver [port] [root] | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | httpserver [port] [root] | exit | help");
 
 		while (true)
 		{
@@ -56,6 +56,7 @@ class Program
 				Console.WriteLine("httpserver [port] [root] - 簡易HTTPサーバーを起動します（既定: 8080, カレントディレクトリ）");
 				Console.WriteLine("nightrider - ナイトライダー風エフェクト（任意のキーで停止）");
 				Console.WriteLine("matrix [green|blue|red] - Matrix風レインエフェクト（任意のキーで停止）");
+				Console.WriteLine("snow - 雪が降るエフェクト（任意のキーで停止）");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -83,6 +84,13 @@ class Program
 						matrix.Run();
 						break;
 				}
+			}
+			else if (cmd == "snow")
+			{
+				logger.LogInformation("Snow エフェクトを起動します");
+				
+				var snow = new SnowEffect();
+				snow.Run();
 			}
 			else if (cmd == "httpserver")
 			{
