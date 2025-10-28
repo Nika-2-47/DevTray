@@ -34,7 +34,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | httpserver [port] [root] | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | wave [multi] | spinner [pattern|multi|demo] | httpserver [port] [root] | exit | help");
 
 		while (true)
 		{
@@ -57,6 +57,8 @@ class Program
 				Console.WriteLine("nightrider - ナイトライダー風エフェクト（任意のキーで停止）");
 				Console.WriteLine("matrix [green|blue|red] - Matrix風レインエフェクト（任意のキーで停止）");
 				Console.WriteLine("snow - 雪が降るエフェクト（任意のキーで停止）");
+				Console.WriteLine("wave [multi] - 波のアニメーションエフェクト（multiで複数波表示、任意のキーで停止）");
+				Console.WriteLine("spinner [0-4|multi|demo] - ローディングスピナーエフェクト（数字でパターン選択、任意のキーで停止）");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -91,6 +93,59 @@ class Program
 				
 				var snow = new SnowEffect();
 				snow.Run();
+			}
+			else if (cmd == "wave")
+			{
+				string variant = parts.Length >= 2 ? parts[1].ToLower() : "single";
+				
+				logger.LogInformation("Wave エフェクトを起動します - バリエーション: {variant}", variant);
+				
+				var wave = new WaveEffect(delay: 50, waveColor: ConsoleColor.Cyan, amplitude: 4.0);
+				
+				if (variant == "multi")
+				{
+					Console.WriteLine("複数波エフェクトを開始します。任意のキーで停止してください...");
+					wave.RunMultiWave(3);
+				}
+				else
+				{
+					Console.WriteLine("波エフェクトを開始します。任意のキーで停止してください...");
+					wave.Run();
+				}
+			}
+			else if (cmd == "spinner")
+			{
+				string variant = parts.Length >= 2 ? parts[1].ToLower() : "0";
+				
+				logger.LogInformation("Spinner エフェクトを起動します - バリエーション: {variant}", variant);
+				
+				if (variant == "demo")
+				{
+					Console.WriteLine("全スピナーパターンをデモ表示します...");
+					SpinnerEffect.ShowPatterns();
+				}
+				else if (variant == "multi")
+				{
+					var spinner = new SpinnerEffect(delay: 80, message: "Multi Spinner Demo");
+					Console.WriteLine("複数スピナーエフェクトを開始します。任意のキーで停止してください...");
+					spinner.RunMultiSpinner(6);
+				}
+				else if (int.TryParse(variant, out int pattern) && pattern >= 0 && pattern <= 4)
+				{
+					var spinner = new SpinnerEffect(
+						delay: 100, 
+						spinnerPattern: pattern, 
+						message: $"Spinner Pattern {pattern}"
+					);
+					Console.WriteLine($"スピナーパターン {pattern} を開始します。任意のキーで停止してください...");
+					spinner.Run();
+				}
+				else
+				{
+					var spinner = new SpinnerEffect(delay: 100, message: "Loading...");
+					Console.WriteLine("標準スピナーエフェクトを開始します。任意のキーで停止してください...");
+					spinner.Run();
+				}
 			}
 			else if (cmd == "httpserver")
 			{
