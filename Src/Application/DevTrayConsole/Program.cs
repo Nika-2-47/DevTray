@@ -34,7 +34,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | wave [multi] | spinner [pattern|multi|demo] | httpserver [port] [root] | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | httpserver [port] [root] | exit | help");
 
 		while (true)
 		{
@@ -59,6 +59,8 @@ class Program
 				Console.WriteLine("snow - 雪が降るエフェクト（任意のキーで停止）");
 				Console.WriteLine("wave [multi] - 波のアニメーションエフェクト（multiで複数波表示、任意のキーで停止）");
 				Console.WriteLine("spinner [0-4|multi|demo] - ローディングスピナーエフェクト（数字でパターン選択、任意のキーで停止）");
+				Console.WriteLine("fire [blue|green] - 炎のエフェクト（blueで青い炎、greenで緑の炎、任意のキーで停止）");
+				Console.WriteLine("stars [warp|quiet] - 星空エフェクト（warpでワープ速度、quietで静かな星空、任意のキーで停止）");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -145,6 +147,50 @@ class Program
 					var spinner = new SpinnerEffect(delay: 100, message: "Loading...");
 					Console.WriteLine("標準スピナーエフェクトを開始します。任意のキーで停止してください...");
 					spinner.Run();
+				}
+			}
+			else if (cmd == "fire")
+			{
+				string variant = parts.Length >= 2 ? parts[1].ToLower() : "red";
+				
+				logger.LogInformation("Fire エフェクトを起動します - バリエーション: {variant}", variant);
+				
+				switch (variant)
+				{
+					case "blue":
+						FireEffect.RunBlueFlame();
+						break;
+					case "green":
+						FireEffect.RunGreenFlame();
+						break;
+					case "red":
+					default:
+						var fire = new FireEffect(delay: 50);
+						Console.WriteLine("炎エフェクトを開始します。任意のキーで停止してください...");
+						fire.Run();
+						break;
+				}
+			}
+			else if (cmd == "stars")
+			{
+				string variant = parts.Length >= 2 ? parts[1].ToLower() : "normal";
+				
+				logger.LogInformation("Stars エフェクトを起動します - バリエーション: {variant}", variant);
+				
+				switch (variant)
+				{
+					case "warp":
+						StarfieldEffect.RunWarpSpeed();
+						break;
+					case "quiet":
+						StarfieldEffect.RunQuietSpace();
+						break;
+					case "normal":
+					default:
+						var stars = new StarfieldEffect(delay: 60, speed: 1.0);
+						Console.WriteLine("星空エフェクトを開始します。任意のキーで停止してください...");
+						stars.Run();
+						break;
 				}
 			}
 			else if (cmd == "httpserver")
