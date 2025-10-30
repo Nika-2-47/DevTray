@@ -34,7 +34,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | httpserver [port] [root] | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | httpserver [port] [root] | exit | help");
 
 		while (true)
 		{
@@ -57,6 +57,7 @@ class Program
 				Console.WriteLine("nightrider - ナイトライダー風エフェクト（任意のキーで停止）");
 				Console.WriteLine("matrix [green|blue|red] - Matrix風レインエフェクト（任意のキーで停止）");
 				Console.WriteLine("snow - 雪が降るエフェクト（任意のキーで停止）");
+				Console.WriteLine("rain [heavy|light] - 雨のエフェクト（heavyで豪雨、lightで小雨、任意のキーで停止）");
 				Console.WriteLine("wave [multi] - 波のアニメーションエフェクト（multiで複数波表示、任意のキーで停止）");
 				Console.WriteLine("spinner [0-4|multi|demo] - ローディングスピナーエフェクト（数字でパターン選択、任意のキーで停止）");
 				Console.WriteLine("fire [blue|green] - 炎のエフェクト（blueで青い炎、greenで緑の炎、任意のキーで停止）");
@@ -95,6 +96,28 @@ class Program
 				
 				var snow = new SnowEffect();
 				snow.Run();
+			}
+			else if (cmd == "rain")
+			{
+				string variant = parts.Length >= 2 ? parts[1].ToLower() : "normal";
+				
+				logger.LogInformation("Rain エフェクトを起動します - バリエーション: {variant}", variant);
+				
+				switch (variant)
+				{
+					case "heavy":
+						RainEffect.RunHeavyRain();
+						break;
+					case "light":
+						RainEffect.RunLightRain();
+						break;
+					case "normal":
+					default:
+						var rain = new RainEffect(delay: 70);
+						Console.WriteLine("雨エフェクトを開始します。任意のキーで停止してください...");
+						rain.Run();
+						break;
+				}
 			}
 			else if (cmd == "wave")
 			{
