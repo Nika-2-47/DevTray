@@ -33,7 +33,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | httpserver [port] [root] | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | httpserver [port] [root] | exit | help");
 
 		while (true)
 		{
@@ -65,6 +65,7 @@ class Program
 				Console.WriteLine("bubble - 泡が上昇するエフェクト（任意のキーで停止）");
 				Console.WriteLine("aurora - オーロラエフェクト（任意のキーで停止）");
 				Console.WriteLine("ripple - 波紋エフェクト（任意のキーで停止）");
+				Console.WriteLine("fireworks - 花火エフェクト（任意のキーで停止）");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -256,6 +257,13 @@ class Program
 				var ripple = new RippleEffect();
 				Console.WriteLine("波紋エフェクトを開始します。任意のキーで停止してください...");
 				ripple.Run();
+			}
+			else if (cmd == "fireworks")
+			{
+				logger.LogInformation("Fireworks エフェクトを起動します");
+				var fireworks = new FireworksEffect();
+				Console.WriteLine("花火エフェクトを開始します。任意のキーで停止してください...");
+				fireworks.Run();
 			}
 			else
 			{
