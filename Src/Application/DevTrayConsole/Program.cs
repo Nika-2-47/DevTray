@@ -33,7 +33,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | exit | help");
 
 		while (true)
 		{
@@ -67,6 +67,7 @@ class Program
 				Console.WriteLine("ripple - 波紋エフェクト（任意のキーで停止）");
 				Console.WriteLine("fireworks - 花火エフェクト（任意のキーで停止）");
 				Console.WriteLine("confetti - 紙吹雪エフェクト（任意のキーで停止）");
+				Console.WriteLine("pulse - パルスエフェクト（任意のキーで停止）");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -272,6 +273,13 @@ class Program
 				var confetti = new ConfettiEffect();
 				Console.WriteLine("紙吹雪エフェクトを開始します。任意のキーで停止してください...");
 				confetti.Run();
+			}
+			else if (cmd == "pulse")
+			{
+				logger.LogInformation("Pulse エフェクトを起動します");
+				var pulse = new PulseEffect();
+				Console.WriteLine("パルスエフェクトを開始します。任意のキーで停止してください...");
+				pulse.Run();
 			}
 			else
 			{
