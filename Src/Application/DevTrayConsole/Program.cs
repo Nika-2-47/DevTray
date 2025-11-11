@@ -68,6 +68,7 @@ class Program
 				Console.WriteLine("fireworks - 花火エフェクト（任意のキーで停止）");
 				Console.WriteLine("confetti - 紙吹雪エフェクト（任意のキーで停止）");
 				Console.WriteLine("pulse - パルスエフェクト（任意のキーで停止）");
+				Console.WriteLine("gauge - ゲージエフェクト（任意のキーで停止）");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -280,6 +281,13 @@ class Program
 				var pulse = new PulseEffect();
 				Console.WriteLine("パルスエフェクトを開始します。任意のキーで停止してください...");
 				pulse.Run();
+			}
+			else if (cmd == "gauge")
+			{
+				logger.LogInformation("Gauge エフェクトを起動します");
+				var gauge = new GaugeEffect();
+				Console.WriteLine("ゲージエフェクトを開始します...");
+				gauge.Run();
 			}
 			else
 			{
