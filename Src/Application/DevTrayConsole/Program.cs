@@ -69,6 +69,7 @@ class Program
 				Console.WriteLine("confetti - 紙吹雪エフェクト（任意のキーで停止）");
 				Console.WriteLine("pulse - パルスエフェクト（任意のキーで停止）");
 				Console.WriteLine("gauge - ゲージエフェクト（任意のキーで停止）");
+				Console.WriteLine("aa - ASCIIアートエフェクト（任意のキーで停止）");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -288,6 +289,13 @@ class Program
 				var gauge = new GaugeEffect();
 				Console.WriteLine("ゲージエフェクトを開始します...");
 				gauge.Run();
+			}
+			else if (cmd == "aa")
+			{
+				logger.LogInformation("AAEffect エフェクトを起動します");
+				var aaEffect = new AAEffect();
+				Console.WriteLine("ASCIIアートエフェクトを開始します。任意のキーで停止してください...");
+				aaEffect.Run();
 			}
 			else
 			{
