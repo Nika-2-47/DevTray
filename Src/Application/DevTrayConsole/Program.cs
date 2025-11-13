@@ -70,6 +70,7 @@ class Program
 				Console.WriteLine("pulse - パルスエフェクト（任意のキーで停止）");
 				Console.WriteLine("gauge - ゲージエフェクト（任意のキーで停止）");
 				Console.WriteLine("aa - ASCIIアートエフェクト（任意のキーで停止）");
+				Console.WriteLine("snake - 蛇のような動きをするエフェクト（任意のキーで停止）");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -296,6 +297,13 @@ class Program
 				var aaEffect = new AAEffect();
 				Console.WriteLine("ASCIIアートエフェクトを開始します。任意のキーで停止してください...");
 				aaEffect.Run();
+			}
+			else if (cmd == "snake")
+			{
+				logger.LogInformation("SnakeEffect エフェクトを起動します");
+				var snake = new SnakeEffect();
+				Console.WriteLine("蛇のようなエフェクトを開始します。任意のキーで停止してください...");
+				snake.Run();
 			}
 			else
 			{
