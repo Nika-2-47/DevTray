@@ -33,7 +33,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | ball | exit | help");
 
 		while (true)
 		{
@@ -71,6 +71,7 @@ class Program
 				Console.WriteLine("gauge - ゲージエフェクト（任意のキーで停止）");
 				Console.WriteLine("aa - ASCIIアートエフェクト（任意のキーで停止）");
 				Console.WriteLine("snake - 蛇のような動きをするエフェクト（任意のキーで停止）");
+				Console.WriteLine("ball - ボールが反射するエフェクト（任意のキーで停止）");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -304,6 +305,13 @@ class Program
 				var snake = new SnakeEffect();
 				Console.WriteLine("蛇のようなエフェクトを開始します。任意のキーで停止してください...");
 				snake.Run();
+			}
+			else if (cmd == "ball")
+			{
+				logger.LogInformation("BouncingBallEffect エフェクトを起動します");
+				var ball = new BouncingBallEffect();
+				Console.WriteLine("ボール反射エフェクトを開始します。任意のキーで停止してください...");
+				ball.Run();
 			}
 			else
 			{
