@@ -33,7 +33,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | ball | fallingstars | clock | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | ball | fallingstars | clock | dna | exit | help");
 
 		while (true)
 		{
@@ -74,6 +74,8 @@ class Program
 				Console.WriteLine("ball - ボールが反射するエフェクト(任意のキーで停止)");
 				Console.WriteLine("fallingstars - 星が降るエフェクト(任意のキーで停止)");
 				Console.WriteLine("clock - デジタル時計エフェクト(任意のキーで停止)");
+				// mazeコマンド削除
+				Console.WriteLine("dna - DNAらせんエフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -328,6 +330,14 @@ class Program
 				var clock = new DigitalClockEffect();
 				Console.WriteLine("デジタル時計エフェクトを開始します。任意のキーで停止してください...");
 				clock.Run();
+			}
+			// mazeコマンド削除
+			else if (cmd == "dna")
+			{
+				logger.LogInformation("DNAHelixEffect エフェクトを起動します");
+				var dna = new DNAHelixEffect();
+				Console.WriteLine("DNAらせんエフェクトを開始します。任意のキーで停止してください...");
+				dna.Run();
 			}
 			else
 			{
