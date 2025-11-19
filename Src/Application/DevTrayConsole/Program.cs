@@ -33,7 +33,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | ball | fallingstars | clock | dna | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | ball | fallingstars | clock | tunnel | dna | exit | help");
 
 		while (true)
 		{
@@ -75,6 +75,7 @@ class Program
 				Console.WriteLine("fallingstars - 星が降るエフェクト(任意のキーで停止)");
 				Console.WriteLine("clock - デジタル時計エフェクト(任意のキーで停止)");
 				// mazeコマンド削除
+				Console.WriteLine("tunnel - トンネルエフェクト(任意のキーで停止)");
 				Console.WriteLine("dna - DNAらせんエフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
 			}
@@ -332,6 +333,13 @@ class Program
 				clock.Run();
 			}
 			// mazeコマンド削除
+			else if (cmd == "tunnel")
+			{
+				logger.LogInformation("TunnelEffect エフェクトを起動します");
+				var tunnel = new TunnelEffect();
+				Console.WriteLine("トンネルエフェクトを開始します。任意のキーで停止してください...");
+				tunnel.Run();
+			}
 			else if (cmd == "dna")
 			{
 				logger.LogInformation("DNAHelixEffect エフェクトを起動します");
