@@ -77,6 +77,7 @@ class Program
 				// mazeコマンド削除
 				Console.WriteLine("tunnel - トンネルエフェクト(任意のキーで停止)");
 				Console.WriteLine("dna - DNAらせんエフェクト(任意のキーで停止)");
+				Console.WriteLine("lifegame - ライフゲームエフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -346,6 +347,13 @@ class Program
 				var dna = new DNAHelixEffect();
 				Console.WriteLine("DNAらせんエフェクトを開始します。任意のキーで停止してください...");
 				dna.Run();
+			}
+			else if (cmd == "lifegame")
+			{
+				logger.LogInformation("LifeGameEffect エフェクトを起動します");
+				var lifeGame = new LifeGameEffect();
+				Console.WriteLine("ライフゲームエフェクトを開始します。任意のキーで停止してください...");
+				lifeGame.Run();
 			}
 			else
 			{
