@@ -78,6 +78,8 @@ class Program
 				Console.WriteLine("tunnel - トンネルエフェクト(任意のキーで停止)");
 				Console.WriteLine("dna - DNAらせんエフェクト(任意のキーで停止)");
 				Console.WriteLine("lifegame - ライフゲームエフェクト(任意のキーで停止)");
+				Console.WriteLine("plasma - プラズマエフェクト(任意のキーで停止)");
+				Console.WriteLine("radar - レーダーエフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -355,6 +357,14 @@ class Program
 				Console.WriteLine("ライフゲームエフェクトを開始します。任意のキーで停止してください...");
 				lifeGame.Run();
 			}
+				else if (cmd == "radar")
+			{
+				logger.LogInformation("RadarEffect エフェクトを起動します");
+				var radar = new RadarEffect();
+				Console.WriteLine("レーダーエフェクトを開始します。任意のキーで停止してください...");
+				radar.Run();
+			}
+					
 			else
 			{
 				Console.WriteLine("不明なコマンドです。help を参照してください。");
