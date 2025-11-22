@@ -80,6 +80,7 @@ class Program
 				Console.WriteLine("lifegame - ライフゲームエフェクト(任意のキーで停止)");
 				Console.WriteLine("plasma - プラズマエフェクト(任意のキーで停止)");
 				Console.WriteLine("radar - レーダーエフェクト(任意のキーで停止)");
+				Console.WriteLine("searchlight - サーチライトエフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -364,7 +365,13 @@ class Program
 				Console.WriteLine("レーダーエフェクトを開始します。任意のキーで停止してください...");
 				radar.Run();
 			}
-					
+			else if (cmd == "searchlight")
+			{
+				logger.LogInformation("SearchlightEffect エフェクトを起動します");
+				var searchlight = new SearchlightEffect();
+				Console.WriteLine("サーチライトエフェクトを開始します。任意のキーで停止してください...");
+				searchlight.Run();
+			}
 			else
 			{
 				Console.WriteLine("不明なコマンドです。help を参照してください。");
