@@ -81,6 +81,7 @@ class Program
 				Console.WriteLine("plasma - プラズマエフェクト(任意のキーで停止)");
 				Console.WriteLine("radar - レーダーエフェクト(任意のキーで停止)");
 				Console.WriteLine("searchlight - サーチライトエフェクト(任意のキーで停止)");
+				Console.WriteLine("spectrum - スペクトラムエフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -371,6 +372,13 @@ class Program
 				var searchlight = new SearchlightEffect();
 				Console.WriteLine("サーチライトエフェクトを開始します。任意のキーで停止してください...");
 				searchlight.Run();
+			}
+			else if (cmd == "spectrum")
+			{
+				logger.LogInformation("SpectrumEffect エフェクトを起動します");
+				var spectrum = new SpectrumEffect();
+				Console.WriteLine("スペクトラムエフェクトを開始します。任意のキーで停止してください...");
+				spectrum.Run();
 			}
 			else
 			{
