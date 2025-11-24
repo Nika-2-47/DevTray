@@ -416,3 +416,10 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+
+# Python virtual environments
+.venv/
+env/
+venv/
+ENV/    

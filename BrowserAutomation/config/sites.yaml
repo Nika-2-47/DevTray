@@ -1,0 +1,58 @@
+sites:
+  # サンプル: Google検索
+  google_search:
+    browser: chromium
+    headless: false
+    steps:
+      - description: "Googleを開く"
+        action: goto
+        target: "https://www.google.com"
+      
+      - description: "検索ボックスに入力"
+        action: fill
+        target: "textarea[name='q']"
+        value: "Playwright Python automation"
+      
+      - description: "Enterキーを押す"
+        action: press
+        target: "textarea[name='q']"
+        value: "Enter"
+      
+      - description: "検索結果を待つ"
+        action: wait
+        value: "#search"
+      
+      - description: "スクリーンショットを撮る"
+        action: screenshot
+        value: "google_result.png"
+
+  # サンプル: 勤怠システム（架空）
+  attendance_sample:
+    browser: chromium
+    headless: false
+    steps:
+      - description: "ログインページへ移動"
+        action: goto
+        target: "https://example.com/login"
+      
+      - description: "ユーザー名入力"
+        action: fill
+        target: "#username"
+        value: "$ATTENDANCE_USER" # .envファイルから読み込み
+      
+      - description: "パスワード入力"
+        action: fill
+        target: "#password"
+        value: "$ATTENDANCE_PASS" # .envファイルから読み込み
+      
+      - description: "ログインボタンクリック"
+        action: click
+        target: "button[type='submit']"
+      
+      - description: "ダッシュボード待機"
+        action: wait
+        value: ".dashboard"
+      
+      - description: "出勤ボタンクリック"
+        action: click
+        target: "#clock-in-btn"

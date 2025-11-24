@@ -1,0 +1,23 @@
+browser:
+  headless: false  # ブラウザを表示するかどうか (デバッグ時は false がおすすめ)
+
+sites:
+  - name: "勤怠システムサンプル"
+    url: "https://example.com/login"  # 実際のURLに書き換えてください
+    steps:
+      - action: "fill"
+        selector: "#username"  # ユーザー名入力欄のCSSセレクタ
+        value: "${MY_USERNAME}" # .envファイルから読み込む変数名
+      
+      - action: "fill"
+        selector: "#password"  # パスワード入力欄のCSSセレクタ
+        value: "${MY_PASSWORD}"
+      
+      - action: "click"
+        selector: "button[type='submit']" # ログインボタン
+      
+      - action: "wait_for_selector"
+        selector: "#dashboard" # ログイン後の画面要素が表示されるのを待つ
+      
+      - action: "screenshot"
+        value: "login_result.png"
