@@ -82,6 +82,7 @@ class Program
 				Console.WriteLine("radar - レーダーエフェクト(任意のキーで停止)");
 				Console.WriteLine("searchlight - サーチライトエフェクト(任意のキーで停止)");
 				Console.WriteLine("spectrum - スペクトラムエフェクト(任意のキーで停止)");
+				Console.WriteLine("glitch - グリッチエフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -379,6 +380,13 @@ class Program
 				var spectrum = new SpectrumEffect();
 				Console.WriteLine("スペクトラムエフェクトを開始します。任意のキーで停止してください...");
 				spectrum.Run();
+			}
+			else if (cmd == "glitch")
+			{
+				logger.LogInformation("GlitchEffect エフェクトを起動します");
+				var glitch = new GlitchEffect();
+				Console.WriteLine("グリッチエフェクトを開始します。任意のキーで停止してください...");
+				glitch.Run();
 			}
 			else
 			{
