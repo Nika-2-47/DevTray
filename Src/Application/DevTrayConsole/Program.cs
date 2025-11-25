@@ -83,6 +83,7 @@ class Program
 				Console.WriteLine("searchlight - サーチライトエフェクト(任意のキーで停止)");
 				Console.WriteLine("spectrum - スペクトラムエフェクト(任意のキーで停止)");
 				Console.WriteLine("glitch - グリッチエフェクト(任意のキーで停止)");
+				Console.WriteLine("cube - 3Dキューブエフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "nightrider")
@@ -387,6 +388,13 @@ class Program
 				var glitch = new GlitchEffect();
 				Console.WriteLine("グリッチエフェクトを開始します。任意のキーで停止してください...");
 				glitch.Run();
+			}
+			else if (cmd == "cube")
+			{
+				logger.LogInformation("Cube3DEffect エフェクトを起動します");
+				var cube = new Cube3DEffect();
+				Console.WriteLine("3Dキューブエフェクトを開始します。任意のキーで停止してください...");
+				cube.Run();
 			}
 			else
 			{
