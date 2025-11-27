@@ -86,7 +86,13 @@ class Program
 				Console.WriteLine("cube - 3Dキューブエフェクト(任意のキーで停止)");
 				Console.WriteLine("circuit - 回路基板エフェクト(任意のキーで停止)");
 				Console.WriteLine("hacker - ハッカー風エフェクト(任意のキーで停止)");
+				Console.WriteLine("aquarium - 水槽エフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
+			}
+			else if (cmd == "aquarium")
+			{
+				var aquarium = new AquariumEffect();
+				aquarium.Run();
 			}
 			else if (cmd == "hacker")
 			{
