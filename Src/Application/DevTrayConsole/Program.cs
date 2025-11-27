@@ -33,7 +33,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | ball | fallingstars | clock | tunnel | dna | circuit | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | ball | fallingstars | clock | tunnel | dna | circuit | hacker | exit | help");
 
 		while (true)
 		{
@@ -85,7 +85,13 @@ class Program
 				Console.WriteLine("glitch - グリッチエフェクト(任意のキーで停止)");
 				Console.WriteLine("cube - 3Dキューブエフェクト(任意のキーで停止)");
 				Console.WriteLine("circuit - 回路基板エフェクト(任意のキーで停止)");
+				Console.WriteLine("hacker - ハッカー風エフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
+			}
+			else if (cmd == "hacker")
+			{
+				var hacker = new HackerEffect();
+				hacker.Run();
 			}
 			else if (cmd == "circuit")
 			{
