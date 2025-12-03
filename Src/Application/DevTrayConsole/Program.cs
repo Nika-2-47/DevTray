@@ -88,6 +88,7 @@ class Program
 				Console.WriteLine("hacker - ハッカー風エフェクト(任意のキーで停止)");
 				Console.WriteLine("vortex - 渦巻きエフェクト(任意のキーで停止)");
 				Console.WriteLine("solarsystem - 太陽系シミュレーション(任意のキーで停止)");
+				Console.WriteLine("mazegen - 迷路生成アニメーション(任意のキーで停止)");
 				Console.WriteLine("aquarium - 水槽エフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
 			}
@@ -100,6 +101,11 @@ class Program
 			{
 				var solar = new SolarSystemEffect();
 				solar.Run();
+			}
+			else if (cmd == "mazegen")
+			{
+				var mazegen = new MazeGenEffect();
+				mazegen.Run();
 			}
 			else if (cmd == "aquarium")
 			{
