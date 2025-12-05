@@ -33,7 +33,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | ball | fallingstars | clock | tunnel | dna | circuit | hacker | vortex | solarsystem | aquarium | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | ball | fallingstars | clock | tunnel | dna | circuit | hacker | vortex | solarsystem | mazegen | typewriter | aquarium | exit | help");
 
 		while (true)
 		{
@@ -89,8 +89,14 @@ class Program
 				Console.WriteLine("vortex - 渦巻きエフェクト(任意のキーで停止)");
 				Console.WriteLine("solarsystem - 太陽系シミュレーション(任意のキーで停止)");
 				Console.WriteLine("mazegen - 迷路生成アニメーション(任意のキーで停止)");
+				Console.WriteLine("typewriter - タイプライターエフェクト(任意のキーで停止)");
 				Console.WriteLine("aquarium - 水槽エフェクト(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
+			}
+			else if (cmd == "typewriter")
+			{
+				var typewriter = new TypewriterEffect();
+				typewriter.Run();
 			}
 			else if (cmd == "vortex")
 			{
