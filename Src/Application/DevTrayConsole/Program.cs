@@ -33,7 +33,7 @@ class Program
         logger.LogError("一度だけログを出力します");
 
 		Console.WriteLine("=== DevTray ツールコレクション ===");
-		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | ball | fallingstars | clock | tunnel | dna | circuit | hacker | vortex | solarsystem | mazegen | typewriter | bouncingball | aquarium | doublependulum | neuralnetwork | exit | help");
+		Console.WriteLine("使用コマンド: nightrider | matrix [green|blue|red] | snow | rain [heavy|light] | wave [multi] | spinner [pattern|multi|demo] | fire [blue|green] | stars [warp|quiet] | lightning | bubble | aurora | ripple | fireworks | confetti | httpserver [port] [root] | pulse | ball | fallingstars | clock | tunnel | dna | circuit | hacker | vortex | solarsystem | mazegen | typewriter | bouncingball | aquarium | doublependulum | neuralnetwork | fractaltree | exit | help");
 
 		while (true)
 		{
@@ -94,6 +94,7 @@ class Program
 				Console.WriteLine("aquarium - 水槽エフェクト(任意のキーで停止)");
 				Console.WriteLine("doublependulum - 二重振り子シミュレーション(任意のキーで停止)");
 				Console.WriteLine("neuralnetwork - ニューラルネットワーク可視化(任意のキーで停止)");
+				Console.WriteLine("fractaltree - フラクタルツリー生成(任意のキーで停止)");
 				Console.WriteLine("exit - アプリ終了");
 			}
 			else if (cmd == "bouncingball")
@@ -135,6 +136,11 @@ class Program
 			{
 				var nn = new NeuralNetworkEffect();
 				nn.Run();
+			}
+			else if (cmd == "fractaltree")
+			{
+				var tree = new FractalTreeEffect();
+				tree.Run();
 			}
 			else if (cmd == "hacker")
 			{
